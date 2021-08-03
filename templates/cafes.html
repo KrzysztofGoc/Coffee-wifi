@@ -19,28 +19,30 @@
 
 	  <table class="table">
         <thead>
-            {% for th in cafes[0] %}
-                <th scope="col">{{ th }}</th>
-            {% endfor %}
+                <th scope="col">Cafe Name</th>
+                <th scope="col">Location</th>
+                <th scope="col">Open</th>
+                <th scope="col">Close</th>
+                <th scope="col">Coffee</th>
+                <th scope="col">Wifi</th>
+                <th scope="col">Power</th>
         </thead>
-
         <tbody>
-        {% for row in cafes[1:] %}
+        {% for cafe in cafes %}
                 <tr>
-                    {% for td in row %}
-                        {% if td[:4] == 'http' %}
-                            <td>
-                                <a href="{{ td }}">Map link</a>
-                            </td>
-                        {% else %}
-                            <td>{{ td }}</td>
-                        {% endif %}
-                    {% endfor %}
+                    <td>{{ cafe.name }}</td>
+                    <td><a href="{{ cafe.location }}">Map location</a></td>
+                    <td>{{ cafe.open_time.strftime("%H:%M") }}</td>
+                    <td>{{ cafe.close_time.strftime("%H:%M") }}</td>
+                    <td>{{ cafe.coffee_quality }}</td>
+                    <td>{{ cafe.wifi_speed }}</td>
+                    <td>{{ cafe.power_socket }}</td>
+
                 </tr>
         {% endfor %}
         </tbody>
   	  </table>
-    <p style="display: flex; justify-content: space-between" >
+    <p style="display: flex; justify-content: space-between;" >
             <a href="{{ url_for('index') }}">Return to index page</a>
             <a style="text-align: right;" href="{{ url_for('add') }}">Add new cafe</a>
     </p>
