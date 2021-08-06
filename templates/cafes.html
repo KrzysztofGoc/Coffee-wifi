@@ -1,18 +1,17 @@
-{% extends 'bootstrap/base.html' %}
+{% extends "base.html" %}
 
-{% block styles %}
-{{ super() }}
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+
+{% block title %}
+<title>All Cafes</title>
 {% endblock %}
 
 
-{% block title %}All Cafes{% endblock %}
-
-
 {% block content %}
+{{ super() }}
 
-<div class="container">
-  <div class="row">
+<div class="container pt-5">
+  <div class="row align-items-center">
     <div class="col-sm-12">
 
       <h1>All Cafes</h1>
@@ -31,7 +30,7 @@
         {% for cafe in cafes %}
                 <tr>
                     <td>{{ cafe.name }}</td>
-                    <td><a href="{{ cafe.location }}">Map location</a></td>
+                    <td><a href="{{ cafe.location }}" target="_blank">Map location</a></td>
                     <td>{{ cafe.open_time.strftime("%H:%M") }}</td>
                     <td>{{ cafe.close_time.strftime("%H:%M") }}</td>
                     <td>{{ cafe.coffee_quality }}</td>

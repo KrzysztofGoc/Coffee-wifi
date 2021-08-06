@@ -5,8 +5,15 @@ background-color: #333;
 color: white;
 }
 
+.table{
+    color: white;
+}
 a {
     color: #ffc107;
+}
+a:hover{
+    color: darkorange;
+    text-decoration: None;
 }
 
 .jumbotron {

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login_style.css')}}">
+{% endblock %}
+
+{% block content %}
+    <div class="box">
+    {% if current_user.is_authenticated %}
+        <h1>Welcome, {{ current_user.name.title() }}</h1>
+    {% else %}
+        <h1>Log in</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                   <p>{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="post" action="{{ url_for("login") }}" novalidate>
+            {{ form.csrf_token }}
+            {{ form.email(placeholder="Email") }}
+            {% for error in form.email.errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+
+            {{ form.password(placeholder="Password") }}
+            {% for error in form.password.errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+            {{ form.submit(value="Let me in.", class="btn btn-primary btn-block btn-large") }}
+        </form>
+    {% endif %}
+    </div>
+
+{% endblock %}

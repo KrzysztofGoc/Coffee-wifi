@@ -1,4 +1,8 @@
-# Coffe-Wifi-Project
-Coffe&amp;Wifi Project
+# Coffe-Wifi
+Coffe&amp;Wifi
 
-Online course side project, created to learn about Flask and WTForms as well as Jinja templating engine.
+Created to learn about Flask and WTForms as well as Jinja templating engine.
+
+Uses flask-login, bcrypt for user authentication, flask-sqlalchemy for database, wtform for forms, 
+flask-migrate for migrations
+

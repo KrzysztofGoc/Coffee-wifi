@@ -1,23 +1,61 @@
-{% extends 'bootstrap/base.html' %}
-{% import "bootstrap/wtf.html" as wtf %}
-
-{% block styles %}
-{{ super() }}
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% extends "base.html" %}
+{% block title %}
+<title> Add A New Cafe</title>
 {% endblock %}
-
-
-{% block title %}Add A New Cafe{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login_style.css')}}">
+{% endblock %}
 
 
 {% block content %}
 <div class="container">
-  <div class="row">
+  <div class="row add-row">
     <div class="col-sm-12 col-md-8">
 
       <h1>Add a new cafe into the database</h1>
-        {{ wtf.quick_form(cafe_form, novalidate=True, method="POST") }}
+    <form method="POST" action="{{ url_for("add") }}" novalidate>
+        {{ cafe_form.csrf_token }}
 
+        {{ cafe_form.cafe_name(placeholder=cafe_form.cafe_name.label.text) }}
+        {% for error in cafe_form.cafe_name.errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+
+        {{ cafe_form.location(placeholder=cafe_form.location.label.text) }}
+        {% for error in cafe_form.location.errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+
+        {{ cafe_form.open_time(placeholder=cafe_form.open_time.label.text) }}
+        {% for error in cafe_form.open_time.errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+
+        {{ cafe_form.close_time(placeholder=cafe_form.close_time.label.text) }}
+        {% for error in cafe_form.close_time.errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+
+        {{ cafe_form.coffee(value="Coffee quality") }}
+        {% for error in cafe_form.coffee.errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+
+        {{ cafe_form.wifi(value="Wifi signal power") }}
+        {% for error in cafe_form.wifi.errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+
+        {{ cafe_form.power(value="Power socket avalibility") }}
+        {% for error in cafe_form.power.errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+
+        {{ cafe_form.submit(value="Submit cafe.", class="btn btn-primary btn-block btn-large") }}
+        {% for error in cafe_form.submit.errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+    </form>
     </div>
   </div>
 </div>
