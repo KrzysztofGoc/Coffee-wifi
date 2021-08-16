@@ -5,9 +5,6 @@
 
 {% block content %}
     <div class="box">
-    {% if current_user.is_authenticated %}
-        <h1>Welcome, {{ current_user.name.title() }}</h1>
-    {% else %}
         <h1>Log in</h1>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
@@ -29,7 +26,6 @@
             {% endfor %}
             {{ form.submit(value="Let me in.", class="btn btn-primary btn-block btn-large") }}
         </form>
-    {% endif %}
     </div>
 
 {% endblock %}

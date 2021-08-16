@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login_style.css')}}">
+{% endblock %}
+
+{% block content %}
+    <div class="box">
+        <h1>Welcome, {{ current_user.name.title() }}</h1>
+    </div>
+
+{% endblock %}

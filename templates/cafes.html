@@ -25,6 +25,10 @@
                 <th scope="col">Coffee</th>
                 <th scope="col">Wifi</th>
                 <th scope="col">Power</th>
+                {% if current_user.is_authenticated %}
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                {% endif %}
         </thead>
         <tbody>
         {% for cafe in cafes %}
@@ -36,7 +40,15 @@
                     <td>{{ cafe.coffee_quality }}</td>
                     <td>{{ cafe.wifi_speed }}</td>
                     <td>{{ cafe.power_socket }}</td>
-
+                    {% if current_user.is_authenticated %}
+                        {% if current_user.id == cafe.user.id %}
+                            <td><a href="{{ url_for("edit", cafe_id=cafe.id) }}">Edit</a></td>
+                            <td><a href="{{ url_for("delete", cafe_id=cafe.id) }}">Delete</a></td>
+                        {% else  %}
+                            <td> </td>
+                            <td> </td>
+                        {% endif %}
+                    {% endif %}
                 </tr>
         {% endfor %}
         </tbody>

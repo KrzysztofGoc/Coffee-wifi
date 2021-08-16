@@ -1,6 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
+from extensions import db
 
 
 class Cafe(db.Model):
@@ -12,3 +10,4 @@ class Cafe(db.Model):
     coffee_quality = db.Column(db.String(250), nullable=False)
     wifi_speed = db.Column(db.String(250), nullable=False)
     power_socket = db.Column(db.String(250), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))

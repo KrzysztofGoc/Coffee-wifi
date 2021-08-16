@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}
-<title> Add A New Cafe</title>
+<title> Edit a cafe</title>
 {% endblock %}
 {% block styles %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login_style.css')}}">
@@ -12,26 +12,27 @@
   <div class="row add-row">
     <div class="col-sm-12 col-md-8">
 
-      <h1>Add a new cafe into the database</h1>
-    <form method="POST" action="{{ url_for("add") }}" novalidate>
+      <h1>Edit cafe {{ cafe.name.title()}}</h1>
+
+    <form method="POST" action="{{ url_for("edit", cafe_id=cafe.id)}}" novalidate>
         {{ cafe_form.csrf_token }}
 
-        {{ cafe_form.name(placeholder=cafe_form.name.label.text) }}
+        {{ cafe_form.name }}
         {% for error in cafe_form.name.errors %}
             <p>{{ error }}</p>
         {% endfor %}
 
-        {{ cafe_form.location(placeholder=cafe_form.location.label.text) }}
+        {{ cafe_form.location }}
         {% for error in cafe_form.location.errors %}
             <p>{{ error }}</p>
         {% endfor %}
 
-        {{ cafe_form.open_time(placeholder=cafe_form.open_time.label.text) }}
+        {{ cafe_form.open_time }}
         {% for error in cafe_form.open_time.errors %}
             <p>{{ error }}</p>
         {% endfor %}
 
-        {{ cafe_form.close_time(placeholder=cafe_form.close_time.label.text) }}
+        {{ cafe_form.close_time }}
         {% for error in cafe_form.close_time.errors %}
             <p>{{ error }}</p>
         {% endfor %}
@@ -51,7 +52,7 @@
             <p>{{ error }}</p>
         {% endfor %}
 
-        {{ cafe_form.submit(value="Submit cafe.", class="btn btn-primary btn-block btn-large") }}
+        {{ cafe_form.submit(value="Edit cafe.", class="btn btn-primary btn-block btn-large") }}
         {% for error in cafe_form.submit.errors %}
             <p>{{ error }}</p>
         {% endfor %}

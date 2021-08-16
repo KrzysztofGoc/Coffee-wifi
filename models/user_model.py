@@ -1,4 +1,4 @@
-from models.cafe_model import db
+from extensions import db
 from flask_login import UserMixin
 
 
@@ -7,3 +7,4 @@ class User(db.Model, UserMixin):
     email = db.Column(db.VARCHAR(100), unique=True)
     password = db.Column(db.VARCHAR(250))
     name = db.Column(db.VARCHAR(100))
+    cafes = db.relationship("Cafe", backref="user")
