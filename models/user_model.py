@@ -8,3 +8,4 @@ class User(db.Model, UserMixin):
     password = db.Column(db.VARCHAR(250))
     name = db.Column(db.VARCHAR(100))
     cafes = db.relationship("Cafe", backref="user")
+    db.UniqueConstraint("email", "name", name="uix_1")

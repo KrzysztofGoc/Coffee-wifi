@@ -81,6 +81,8 @@ def register():
         if register_form.validate_on_submit():
             if User.query.filter_by(email=register_form.email.data).first():
                 flash("This email is already present in our database. Log in instead")
+            elif User.query.filter_by(name=register_form.login.data).first():
+                flash("This username is already present in our database. Log in instead")
             else:
                 new_user = User()
                 new_user.name = register_form.login.data
