@@ -6,6 +6,15 @@
 {% block content %}
     <div class="box">
         <h1>Welcome, {{ current_user.name.title() }}</h1>
+        <br/>
+        <dl>
+            <dt class="mb-3">Your API key:</dt>
+            <dd class="pl-3">
+                <input type="text" value="{{ api_key }}" disabled>
+            </dd>
+        </dl>
+
+
     </div>
 
 {% endblock %}

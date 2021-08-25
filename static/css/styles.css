@@ -29,3 +29,13 @@ a:hover{
     margin-top: 20px;
     padding-top: 20px;
 }
+.card{
+    color: white;
+    height: 100%;
+}
+.card-img-top{
+    height: auto;
+}
+.footer-buttons:hover{
+    color: white!important;
+}

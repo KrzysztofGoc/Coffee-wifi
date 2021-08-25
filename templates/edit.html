@@ -14,7 +14,7 @@
 
       <h1>Edit cafe {{ cafe.name.title()}}</h1>
 
-    <form method="POST" action="{{ url_for("edit", cafe_id=cafe.id)}}" novalidate>
+    <form method="POST" action="{{ url_for("edit", cafe_id=cafe.id)}}" enctype="multipart/form-data" novalidate>
         {{ cafe_form.csrf_token }}
 
         {{ cafe_form.name }}
@@ -49,6 +49,11 @@
 
         {{ cafe_form.power_socket }}
         {% for error in cafe_form.power_socket.errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+
+        {{ cafe_form.thumbnail }}
+        {% for error in cafe_form.thumbnail.errors %}
             <p>{{ error }}</p>
         {% endfor %}
 

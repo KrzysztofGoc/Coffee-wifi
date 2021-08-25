@@ -13,7 +13,7 @@
     <div class="col-sm-12 col-md-8">
 
       <h1>Add a new cafe into the database</h1>
-    <form method="POST" action="{{ url_for("add") }}" novalidate>
+    <form method="POST" action="{{ url_for("add") }}" enctype="multipart/form-data" novalidate>
         {{ cafe_form.csrf_token }}
 
         {{ cafe_form.name(placeholder=cafe_form.name.label.text) }}
@@ -48,6 +48,11 @@
 
         {{ cafe_form.power_socket }}
         {% for error in cafe_form.power_socket.errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+
+        {{ cafe_form.thumbnail }}
+        {% for error in cafe_form.thumbnail.errors %}
             <p>{{ error }}</p>
         {% endfor %}
 
