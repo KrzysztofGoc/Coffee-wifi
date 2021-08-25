@@ -16,6 +16,7 @@ Has simple CRUD, REST API.
 - <b>flask-expects-json</b> and <b>jsonschema</b> for API validation,
 - <b>WTForms</b>, <b>flask-wtforms</b> for forms and forms validation.
 
-![coffewifi](https://user-images.githubusercontent.com/87522326/130776878-66d1f645-64f1-4c0c-8375-744d3e208d8d.PNG)
+![coffewifi](https://user-images.githubusercontent.com/87522326/130825499-6a256725-e822-4757-be25-7a24ed1ad957.PNG)
+
 
 
